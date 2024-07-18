@@ -11,7 +11,7 @@
 
   <h1>What is going on?</h1>
   <ol>
-    <li>We are using powershell to donwload batch file in victim's pc.</li>
+    <li>We are using powershell to download batch file in victim's pc.</li>
     <li>Batch file will try to get 'localstate' & 'login data' file of common web browsers.</li>
     <li>When it gets them, it will transfer all of them to your discord server through your provided discord webhook.</li>
     <li>Now we can decrypt localstates using a python file which I have uploaded called "decrypt.py"</li>
@@ -23,6 +23,5 @@
     <li>This file contains settings and information</li>
     <li>One of the information is encrypted password </li>
   </ol>
-
 
 </html>
